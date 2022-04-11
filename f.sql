@@ -79,3 +79,76 @@
 
 
 
+
+-- ----> CREATE TABLE
+-- CREATE TABLE customers(id INT, customer_fname VARCHAR(30), customer_lname VARCHAR(30) );
+
+-- ----> INSERT VALUES IN TABLE
+-- INSERT INTO customers() VALUES(1,"Senku","Ishigami"),
+                            --   (2,"Shoyo","Hinata");
+
+-- INSERT INTO customers(customer_fname,id) VALUES("Naruto",3),
+--                                                ("Sasuke",4),
+--                                                ("Shino",5);
+
+-- ----> SELECT COMMAND
+-- SELECT id, customer_fname FROM customers;
+-- SELECT * FROM customers WHERE id>2;
+-- SELECT * FROM customers WHERE customer_lname IS NULL;
+
+
+-- ----> CREATING NEW TABLE TO MAKE EXAMPLES MORE FUN
+
+-- CREATE TABLE employee(id INT, fname VARCHAR(30), lname VARCHAR(30), age INT, gender VARCHAR(10), salary INT);
+
+-- INSERT INTO employee 
+-- VALUES(1,"Zenitsu","Agatsuma",21,"Male",30000),
+--       (2,"Nezuko","Kamado",19,"Female",25000),
+--       (3,"Tanjiro","Kamado",21,"Male",30000),
+--       (4,"Inosuke","Hashibira",20,"Male",40000),
+--       (5,"Kyojuro","Rengoku",23,"Male",100000),
+--       (6,"Tengen","Uzui",35,"Male",70000),
+--       (7,"Giyutom","Tomioka",25,"Male",70000),
+--       (8,"Shinobu","Kocho",23,"Female",100000);
+
+
+-- SELECT * FROM employee;
+-- SELECT * FROM employee WHERE age = 23 AND gender = "Female";
+-- SELECT * FROM employee WHERE salary>=30000 AND salary <= 40000;
+-- SELECT * FROM employee WHERE (age = 23 AND gender = "Male") OR (age < 21 AND salary <= 40000);
+-- SELECT * FROM employee WHERE id = 1 OR id =3 OR id = 6;
+
+-- SELECT * FROM employee WHERE id IN(1,3,6);
+-- SELECT * FROM employee WHERE salary BETWEEN 30000 AND 40000;
+
+-- ----> ORDER BY keyword
+-- SELECT * FROM employee ORDER BY salary DESC;
+-- SELECT * FROM employee ORDER BY salary DESC,id DESC;
+
+-- ----> LIMIT keyword
+-- SELECT * FROM employee LIMIT 4;
+-- SELECT * FROM employee ORDER BY salary DESC LIMIT 3 ;
+
+-- ----> MIN() and MAX()
+-- SELECT MIN(salary) FROM employee;
+-- SELECT MAX(salary) FROM employee;
+
+
+-- ----> COUNT() AVG() SUM()
+-- SELECT COUNT(id) FROM employee;
+-- --> AS keyword to create aliases
+-- SELECT SUM(salary) AS total_money_paid FROM employee;
+-- SELECT COUNT(id) AS total_employee , AVG(salary) AS average_salary FROM employee;
+
+
+-- ----> using LIKE operator
+
+-- SELECT fname, lname FROM employee WHERE fname LIKE "_e%";
+
+-- ----> create new table from already existing table
+
+-- CREATE TABLE employee1 AS SELECT * FROM employee where id =1000;
+
+-- ----> create table from already existing table with values
+-- CREATE TABLE employee2 AS SELECT * FROM employee;
+
