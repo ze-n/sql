@@ -185,16 +185,38 @@
 
 -- ----> Relational operator
 
+-- SELECT * FROM salary;
+-- SELECT * FROM salary WHERE salary < 70000;
+-- SELECT * FROM salary WHERE salary > 70000;
+-- SELECT * FROM salary WHERE salary <= 70000;
+-- SELECT * FROM salary WHERE salary >= 70000;
+-- SELECT * FROM salary WHERE salary = 70000;
+-- SELECT * FROM salary WHERE salary != 70000;
 
 
 
 
 
+-- ----> Creating table for logical operators
+
+-- CREATE TABLE customers(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(40), state VARCHAR(40), score INT);
+-- INSERT INTO customers(name,state,score)
+--                values("Senku","Himachal",10001),
+--                      ("Light","Assam",2323),
+--                      ("Shoyo","Himachal",23),
+--                      ("Ryuk","Assam",123),
+--                      ("Zenitsu","Himachal",5424),
+--                      ("Doflamingo","Punjab",12323),
+--                      ("Naruto","Assam",2323),
+--                      ("Zenitsu","Assam",1000),
+--                      ("Light","Himachal",12);
 
 
 
-
-
+-- ----> AND OR NOT 
+-- SELECT * FROM customers WHERE score > 500 AND score < 6000;
+-- SELECT * FROM customers WHERE state = "Himachal" OR state = "Assam";
+-- SELECT * FROM customers WHERE NOT (state = "Himachal" OR state = "Assam");
 
 
 
