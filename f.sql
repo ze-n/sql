@@ -152,3 +152,67 @@
 -- ----> create table from already existing table with values
 -- CREATE TABLE employee2 AS SELECT * FROM employee;
 
+-- ----> create table from selected attributes of already existing table
+
+-- CREATE TABLE salary AS SELECT id,fname,salary FROM employee; 
+
+-- ----> update command
+-- UPDATE salary SET fname = "Shikamaru",salary = 120000 WHERE fname = "Tengen";
+
+-- UPDATE salary SET salary = 45000 WHERE salary <=30000;
+
+-- ----> creating table for arithmatic operations
+
+-- CREATE TABLE arith(num1 INT , num2 INT, result DOUBLE);
+-- INSERT INTO arith(num1,num2) 
+-- VALUES(12,14),
+--       (112,221),
+--       (1231,23),
+--       (123,221);
+
+-- UPDATE arith 
+-- SET result = num1 + num2;
+
+-- UPDATE arith
+-- SET result = num1 - num2;
+
+-- UPDATE arith
+-- SET result = num1 * num2;
+
+-- UPDATE arith 
+-- SET result = num1/num2;
+
+
+-- ----> Relational operator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- ----> Altering structure of table
+
+-- ----> Rename a table
+-- RENAME arith TO maaath;
+
+
+
+
+
+ 
