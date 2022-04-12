@@ -220,7 +220,42 @@
 
 
 
+-- ----> Special Operators
 
+-- ----> BETWEEN IN IS LIKE
+
+-- ----> IN BETWEEN LIKE
+-- SELECT * FROM customers WHERE score BETWEEN 500 AND 6000;
+-- SELECT * FROM customers WHERE state IN("Himachal","Assam");
+
+
+
+-- ----> LIKE operator
+
+--  SELECT * FROM customers WHERE name LIKE "s%";
+--  SELECT * FROM customers WHERE state LIKE "H_m%";
+
+
+
+
+
+
+
+
+
+
+-- ----> Creating table for IS 
+-- CREATE TABLE emp(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), state VARCHAR(30)); 
+-- INSERT INTO emp(name,state)
+-- VALUES("Senku","Himachal"),
+--       ("Shoyo",NULL),
+--       ("Zenitsu","Goa"),
+--       ("Ryuk",NULL),
+--       ("Doflamingo","Punjab");
+
+-- ----> Used IS operator 
+-- SELECT * FROM emp WHERE state IS NULL;
+-- SELECT * FROM emp WHERE state IS NOT NULL;
 
 
 
