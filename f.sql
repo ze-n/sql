@@ -266,9 +266,44 @@
 -- ----> Altering structure of table
 
 -- ----> Rename a table
--- RENAME arith TO maaath;
+
+-- RENAME TABLE emp TO top_emp;
+
+-- ALTER TABLE top_emp 
+-- RENAME emp;
+
+-- ----> Add column to table
+
+-- ALTER TABLE emp
+-- ADD COLUMN salary INT DEFAULT 10000;
 
 
+-- ---->  drop column from table
+-- ALTER TABLE emp
+-- DROP COLUMN salary;
+
+-- ----> drop primary key
+-- ALTER TABLE emp
+-- DROP PRIMARY KEY;
+
+-- ----> Modify column using modify
+
+-- ALTER TABLE emp
+-- MODIFY COLUMN id VARCHAR(20) PRIMARY KEY;
+
+-- ----> modify column using change
+-- ALTER TABLE emp
+-- CHANGE id id INT AUTO_INCREMENT;
+
+
+-- ----> rename column using rename column
+-- ALTER TABLE emp
+-- RENAME COLUMN id TO emp_id;
+
+
+-- ----> rename column using change
+-- ALTER TABLE emp
+-- CHANGE emp_id id INT AUTO_INCREMENT;
 
 
 
