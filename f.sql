@@ -302,9 +302,41 @@
 
 
 -- ----> rename column using change
--- ALTER TABLE emp
--- CHANGE emp_id id INT AUTO_INCREMENT;
+-- -- ALTER TABLE emp
+-- -- CHANGE emp_id id INT AUTO_INCREMENT;
 
 
 
- 
+-- -- ----> DELETE command
+-- -- DELETE FROM emp WHERE id = 3; 
+
+
+-- -- ----> DROP TABLE
+--  DROP TABLE employee1;
+
+
+-- ----> Table for string functions
+-- CREATE TABLE books(book_id INT PRIMARY KEY AUTO_INCREMENT,title VARCHAR(50),author_fname VARCHAR(30), author_lname VARCHAR(30),publishing_year INT,pages INT, stock_quantity INT);
+
+--  INSERT INTO books(title,author_fname,author_lname,publishing_year,pages,stock_quantity)
+--  VALUES
+--  ("The monk and his monkey","Hinata","Shoyo",2012,300,13),
+--  ("Life of a coder","Senku","Ishigami",2011,250,8),
+--  ("The moon light","Ken","Kaneki",2008,190,12),
+--  ("Saint or satan","Itachi","Uchiha",2001,321,3),
+--  ("Give up on your dreams","Levi","Ackerman",1993,121,9),
+--  ("News channels controlling the world","Vladimir","Putin",2021,13,2),
+--  ("The information Era","Naruto","Uzumaki",1998,129,12),
+--  ("Dream the world you want to fight for","Sasuke","Uchiha",1997,141,9);
+
+
+-- SELECT CONCAT(title," by ",author_fname," ",author_lname) AS description FROM books;
+-- SELECT CONCAT_WS(" ",title,"by",author_fname,author_lname) AS description FROM books;
+-- SELECT SUBSTR(title,1,10) AS title FROM books;
+-- SELECT CONCAT(SUBSTR(title,1,8),"...") As title , author_fname, pages, stock_quantity FROM books;
+-- SELECT REPLACE(title,"The","This") AS title, author_fname, stock_quantity FROM books;
+-- SELECT REVERSE(title) AS title_in_alian_language FROM books;
+-- SELECT title,CHAR_LENGTH(title) AS title_length FROM books;
+-- SELECT UPPER(title) AS title FROM books;
+-- SELECT LOWER(title) AS title FROM books;
+
