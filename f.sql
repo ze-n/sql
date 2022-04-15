@@ -340,3 +340,73 @@
 -- SELECT UPPER(title) AS title FROM books;
 -- SELECT LOWER(title) AS title FROM books;
 
+
+-- ----> Mysql Constraints
+ 
+-- --> NOT NULL CONSTRAINT
+-- ---> USING CREATE TABLE
+
+-- CREATE TABLE employee1(emp_id INT NOT NULL, name VARCHAR(20), salary INT);
+
+-- --> USING ALTER COMMAND
+
+-- ALTER TABLE employee1
+-- MODIFY COLUMN emp_id INT NOT NULL;
+
+-- --> UNIQUE CONSTRAINT
+-- ALTER TABLE employee1
+-- MODIFY COLUMN emp_id INT NOT NULL UNIQUE;
+
+-- --> To see all constraints of a table
+-- SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE 
+-- FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+-- WHERE TABLE_NAME = "employee1";
+
+
+
+
+-- --> CHECK CONSTRAINT
+
+-- ALTER TABLE employee1
+-- MODIFY COLUMN salary INT CHECK(salary>=30000);
+
+-- ALTER TABLE employee1
+-- ADD CONSTRAINT CHECK(salary>=40000);
+
+-- --> DROP A CONSTRAINT
+-- ALTER TABLE employee1
+-- DROP CONSTRAINT employee1_chk_1;
+
+-- --> GIVING NAME TO CONSTRAINT
+-- ALTER TABLE employee1
+-- ADD CONSTRAINT chk_salary CHECK(salary>=40000);
+
+
+-- --> DEFAULT CONSTRAINT
+-- ALTER TABLE employee1
+-- ALTER name SET DEFAULT "UNNAMED";
+
+-- --> DROP DEFAULT 
+-- ALTER TABLE employee1
+-- ALTER name DROP DEFAULT;
+
+
+
+
+-- --> just adding some values to employee1 
+
+INSERT INTO employee1
+VALUES(1,"Senku",60000),
+(2,"Shoyo",120612),
+(3,"Zoro",120063);
+
+-- --> creating indexes
+
+CREATE INDEX idx_name
+ON employee1(name);
+
+-- --> displaying all indexes for employee1
+
+SHOW INDEXES FROM employee1;
+
+
