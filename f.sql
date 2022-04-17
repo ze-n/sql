@@ -553,3 +553,29 @@ SELECT departments.dep_id , state
 FROM emp1 RIGHT JOIN departments 
 ON emp1.dep_id = departments.dep_id
 WHERE emp_id IS NULL;
+
+-- --> CREATING TABLE FOR SELF JOIN
+
+    CREATE TABLE emp2(  emp_id INT PRIMARY KEY,
+                        name VARCHAR(30), 
+                        manager_id INT);
+
+    INSERT INTO emp2
+    VALUES
+    (1,"Senku",2),
+    (2,"Shoyo",NULL),
+    (3,"Zenitsu",1),
+    (4,"Zoro",3),
+    (5,"Naruto",1);
+
+-- ----> SELF JOIN
+
+SELECT e1.name AS employee, e2.name AS manager 
+FROM emp2 e1 , emp2 e2
+WHERE e1.manager_id= e2.emp_id;
+
+-- ----> SELF JOIN USING LEFT JOIN
+
+SELECT e1.name AS employee, e2.name AS manager 
+FROM emp2 e1 LEFT JOIN emp2 e2
+ON e1.manager_id = e2.emp_id;
