@@ -47,14 +47,48 @@
 -- DROP USER 'senku'@'localhost';
 
 
+-- You can add comments about the user while creating user using the COMMENT clause 
+
+CREATE USER 'zoro'@'localhost' COMMENT 'some information';
+
+-- TO SEE User, Host and comments
+
+SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES
+WHERE User = "zoro" AND Host = "localhost";
+
+
+-- ALTER USER 
+-- CHANGE USER zoro@localhost password
+ALTER USER "zoro"@"localhost" IDENTIFIED BY "12";
+
+-- Expire clause
+-- create user sasuke@localhost 
+-- such that he need to reset his password evertime he login
+
+CREATE USER 'sasuke'@'localhost'
+IDENTIFIED BY '123'
+PASSWORD EXPIRE;
+
+-- create user naruto@localhost such that
+-- he need to reset his password every 30 days
+-- and if he enter his password incorrect 2 times
+-- his account gets locked for 3 days
+
+CREATE USER 'naruto'@'localhost'
+IDENTIFIED BY "123"
+PASSWORD EXPIRE INTERVAL 30 DAY
+FAILED_LOGIN_ATTEMPTS 2
+PASSWORD_LOCK_TIME 3;
 
 
 
+-- LOCK AND UNLOCK USER
 
+-- unlock user naruto@localhost account
+ALTER USER 'naruto'@'localhost' ACCOUNT UNLOCK;
 
-
-
-
+-- lock user naruto@localhost account
+ALTER USER 'naruto'@'localhost' ACCOUNT LOCK;
 
 
 
@@ -384,29 +418,138 @@
 
 -- --> DEFAULT CONSTRAINT
 -- ALTER TABLE employee1
--- ALTER name SET DEFAULT "UNNAMED";
+-- ALTER COLUMN name SET DEFAULT "UNNAMED";
 
 -- --> DROP DEFAULT 
 -- ALTER TABLE employee1
--- ALTER name DROP DEFAULT;
+-- ALTER COLUMN name DROP DEFAULT;
 
 
 
 
 -- --> just adding some values to employee1 
 
-INSERT INTO employee1
-VALUES(1,"Senku",60000),
-(2,"Shoyo",120612),
-(3,"Zoro",120063);
+-- INSERT INTO employee1
+-- VALUES(1,"Senku",60000),
+-- (2,"Shoyo",120612),
+-- (3,"Zoro",120063);
 
 -- --> creating indexes
 
-CREATE INDEX idx_name
-ON employee1(name);
+-- CREATE INDEX idx_name
+-- ON employee1(name);
 
 -- --> displaying all indexes for employee1
 
-SHOW INDEXES FROM employee1;
+-- SHOW INDEXES FROM employee1;
 
 
+
+-- ----> PRIMARY KEY CONSTRAINT
+
+-- ALTER TABLE employee1
+-- ADD PRIMARY KEY(emp_id);
+
+-- ----> DROPING PRIMARY KEY CONSTRAINT
+
+-- ALTER TABLE employee1
+-- DROP PRIMARY KEY;
+
+
+
+
+
+
+
+
+-- ----> ADDING FOREIGN KEY
+
+
+CREATE TABLE departments( dep_id INT PRIMARY KEY AUTO_INCREMENT, 
+                         state VARCHAR(40)
+
+);
+
+CREATE TABLE emp1(   emp_id INT AUTO_INCREMENT PRIMARY KEY,
+                     name VARCHAR(40),
+                     dep_id INT,
+                     CONSTRAINT fk_EmpDepartment 
+                     FOREIGN KEY(dep_id) REFERENCES departments(dep_id) );
+
+
+
+
+-- -----> DROP FOREIGN KEY
+ALTER TABLE emp1
+DROP FOREIGN KEY Fk_EmpDepartment;
+
+
+-- ----> ADDING FOREIGN KEY
+
+ALTER TABLE emp1
+ADD CONSTRAINT fk_EmpDepartment
+FOREIGN KEY(dep_id) REFERENCES departments(dep_id);
+
+
+-- ----> ADDING SOME DATA TO TABLES
+
+INSERT INTO departments(state)
+VALUES
+("Himachal"),
+("Punjab"),
+("Delhi"),
+("Assam");
+
+INSERT INTO emp1(name,dep_id)
+VALUES
+("Shoyo",1),
+("Senku",3),
+("Zoro",4),
+("Zenitsu",1),
+("Naruto",4);
+
+
+-- ----> CROSS JOIN
+
+SELECT * FROM emp1 CROSS JOIN departments;
+
+-- ----> USING WHERE CLAUSE WITH CROSS JOIN
+
+SELECT * FROM emp1 CROSS JOIN departments 
+WHERE emp1.dep_id = departments.dep_id;
+
+-- ----> INNER JOIN
+
+SELECT * FROM emp1 INNER JOIN departments
+ON emp1.dep_id = departments.dep_id ;
+
+-- ----> USING WHERE CLAUSE WITH INNER JOIN
+
+SELECT emp_id, name, departments.dep_id, state
+FROM emp1 INNER JOIN departments
+ON emp1.dep_id = departments.dep_id
+WHERE departments.dep_id = 1;
+
+-- ----> LEFT JOIN
+
+SELECT * FROM departments LEFT JOIN emp1
+ON emp1.dep_id = departments.dep_id;
+
+-- ----> USING WHERE CLAUSE WTIH LEFT JOIN
+
+SELECT departments.dep_id , state 
+FROM departments LEFT JOIN emp1
+ON emp1.dep_id = departments.dep_id 
+WHERE emp_id IS NULL;
+
+-- ----> RIGHT JOIN
+
+SELECT * FROM emp1 RIGHT JOIN departments
+ON emp1.dep_id = departments.dep_id;
+
+-- ----> USING WHERE CLAUSE WITH RIGHT JOIN
+
+SELECT departments.dep_id , state 
+FROM emp1 RIGHT JOIN departments 
+ON emp1.dep_id = departments.dep_id
+WHERE emp_id IS NULL;
