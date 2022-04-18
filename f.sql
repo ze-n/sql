@@ -14,7 +14,9 @@
 -- -- ///////////////////////////////////////////////////////////////////////////////////////
 -- -- CREATE DATABASE shop;
 
-
+       -- CREATE DATABASE test;
+       -- USE test;
+       -- DROP DATABASE test; 
 
 
 -- -- ///////////////////////////////////////////////////////////////////////////////////////
@@ -323,7 +325,7 @@ ALTER USER 'naruto'@'localhost' ACCOUNT LOCK;
 -- ----> Modify column using modify
 
 -- ALTER TABLE emp
--- MODIFY COLUMN id VARCHAR(20) PRIMARY KEY;
+-- MODIFY COLUMN id VARCHAR(20);
 
 -- ----> modify column using change
 -- ALTER TABLE emp
